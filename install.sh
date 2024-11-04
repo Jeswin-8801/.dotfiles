@@ -1,11 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env nix-shell
 
-nix-shell -p ripgrep
+#! nix-shell -i bash -p ripgrep
 
-VERSION=$(rg 'system.stateVersion' /etc/nixos/configuration.nix -o -r '$1' -e '.*"([^"]+)".*')
+VERSION=$(rg -No 'system.stateVersion = \s*"([^"]+)"' /etc/nixos/configuration.nix -r '$1')
 sed -i 's/your_version/$VERSION/g' nixos/configuration.nix
 
-sudo cp -r nixos/* /etc/nixos
+sudo cp nixos/* /etc/nixos
 sudo chown -R root:root /etc/nixos
 
 cp -r home/.config/* ~/.config
