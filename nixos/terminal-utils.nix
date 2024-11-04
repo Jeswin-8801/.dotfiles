@@ -2,7 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
-    nvim
+    neovim
     file
     upx
     git
