@@ -2,9 +2,9 @@
 
 {
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.xnm = {
+  users.users.jeswins = {
     isNormalUser = true;
-    description = "xnm";
+    description = "jeswins";
     extraGroups = [ "networkmanager" "input" "wheel" "video" "audio" "tss" ];
     shell = pkgs.fish;
     packages = with pkgs; [
@@ -13,7 +13,6 @@
       discord
       tdesktop
       vscodium
-      brave
     ];
   };
 

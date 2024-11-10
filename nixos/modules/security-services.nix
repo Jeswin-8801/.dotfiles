@@ -54,17 +54,13 @@
         executable = "${lib.getBin pkgs.discord}/bin/discord";
         profile = "${pkgs.firejail}/etc/firejail/discord.profile";
       };
-      slack = {
-        executable = "${lib.getBin pkgs.slack}/bin/slack";
-        profile = "${pkgs.firejail}/etc/firejail/slack.profile";
-      };
+      # slack = {
+      #   executable = "${lib.getBin pkgs.slack}/bin/slack";
+      #   profile = "${pkgs.firejail}/etc/firejail/slack.profile";
+      # };
       telegram-desktop = {
         executable = "${lib.getBin pkgs.tdesktop}/bin/telegram-desktop";
         profile = "${pkgs.firejail}/etc/firejail/telegram-desktop.profile";
-      };
-      brave = {
-        executable = "${lib.getBin pkgs.brave}/bin/brave";
-        profile = "${pkgs.firejail}/etc/firejail/brave.profile";
       };
       qutebrowser = {
         executable = "${lib.getBin pkgs.qutebrowser}/bin/qutebrowser";
