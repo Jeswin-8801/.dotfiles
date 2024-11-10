@@ -8,10 +8,10 @@
     disko.url = "github:nix-community/disko";
   };
 
-  outputs = { self, nixpkgs, disko, ... } @attrs: {
+  outputs = { self, nixpkgs, disko, ... } @ inputs: {
     nixosConfigurations.jeswins-nix = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = attrs;
+      specialArgs = { inherit inputs; };
       modules = [
         disko.nixosModules.disko ./modules/main/disk-config.nix
 
