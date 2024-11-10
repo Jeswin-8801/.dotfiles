@@ -13,64 +13,70 @@
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       modules = [
+        disko.nixosModules.disko ./modules/main/disk-config.nix # foundational operations must run first
+
         ./configuration.nix
         ./hardware-configuration.nix
-
-        ./modules/main/time.nix
+        
+        ./modules/main/gc.nix
         ./modules/main/internationalisation.nix
+        ./modules/main/networking.nix
         ./modules/main/nix-settings.nix
         ./modules/main/nixpkgs.nix
-        ./modules/main/gc.nix
+        ./modules/main/time.nix
         ./modules/main/users.nix
-        ./modules/main/networking.nix
 
-        disko.nixosModules.disko
-        ./modules/main/disk-config.nix
 
-        # ./modules/nvidia.nix
-        ./modules/disable-nvidia.nix
-        ./modules/opengl.nix
+        # ./modules/graphics/nvidia.nix
+        ./modules/graphics/disable-nvidia.nix
+        ./modules/graphics/opengl.nix
 
-        ./modules/sound.nix
-        ./modules/usb.nix
-        ./modules/bluetooth.nix
-        ./modules/location.nix
-        ./modules/printing.nix
-     
-        ./modules/swap.nix
-        ./modules/bootloader.nix
-        ./modules/auto-upgrade.nix
-        ./modules/linux-kernel.nix
-        ./modules/environment-variables.nix
 
-        ./modules/screen.nix
-        ./modules/display-manager.nix
-        ./modules/theme.nix
-        ./modules/fonts.nix
+        ./modules/peripherals/bluetooth.nix
+        ./modules/peripherals/printing.nix
+        ./modules/peripherals/sound.nix
+        ./modules/peripherals/usb.nix
 
-        ./modules/security-services.nix
-        ./modules/services.nix
 
-        # ./modules/gnome.nix
-        ./modules/hyprland.nix
+        ./modules/system/auto-upgrade.nix
+        ./modules/system/bootloader.nix
+        ./modules/system/environment-variables.nix
+        ./modules/system/linux-kernel.nix
+        ./modules/system/swap.nix
 
-        # ./modules/fingerprint-scanner.nix
-        ./modules/clamav-scanner.nix
-        ./modules/mac-randomize.nix
-        ./modules/open-ssh.nix
-        ./modules/firewall.nix
-        ./modules/dns.nix
-        # ./modules/vpn.nix
-   
-        ./modules/virtualisation.nix
-        ./modules/programming-languages.nix
-        ./modules/lsp.nix
-        ./modules/wasm.nix    
-        ./modules/llm.nix
 
-        ./modules/info-fetchers.nix
-        ./modules/utils.nix
-        ./modules/terminal-utils.nix
+        ./modules/ui/display-manager.nix
+        ./modules/ui/fonts.nix
+        # ./modules/ui/gnome.nix
+        ./modules/ui/hyprland.nix
+        ./modules/ui/screen.nix
+        ./modules/ui/theme.nix
+
+
+        ./modules/services/location.nix
+        ./modules/services/security-services.nix
+        ./modules/services/services.nix
+
+
+        ./modules/security/clamav-scanner.nix
+        ./modules/security/dns.nix
+        # ./modules/security/fingerprint-scanner.nix
+        ./modules/security/firewall.nix
+        ./modules/security/mac-randomize.nix
+        ./modules/security/open-ssh.nix
+        # ./modules/security/vpn.nix
+
+
+        ./modules/software-dev/llm.nix
+        ./modules/software-dev/lsp.nix
+        ./modules/software-dev/programming-languages.nix
+        ./modules/software-dev/virtualisation.nix
+        ./modules/software-dev/wasm.nix
+
+
+        ./modules/utility/info-fetchers.nix
+        ./modules/utility/utils.nix
+        ./modules/utility/terminal-utils.nix
       ];
     };
   };
