@@ -2,22 +2,23 @@
   description = "jeswins's NixOS Configuration";
 
   inputs = {
-      nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-      rust-overlay.url = "github:oxalica/rust-overlay";
-      wezterm.url = "github:wez/wezterm?dir=nix";
-      disko.url = "github:nix-community/disko";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    rust-overlay.url = "github:oxalica/rust-overlay";
+    wezterm.url = "github:wez/wezterm?dir=nix";
+    disko.url = "github:nix-community/disko";
   };
 
-  outputs = { nixpkgs, ... } @ inputs:
+  outputs = { self, nixpkgs, disko, ... } @attrs: {
   {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs; };
+    nixosConfigurations.jeswins-nix = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = attrs;
       modules = [
-        disko.nixosModules.disko ./modules/main/disk-config.nix # foundational operations must run first
+        disko.nixosModules.disko ./modules/main/disk-config.nix
 
         ./configuration.nix
         ./hardware-configuration.nix
-        
+
         ./modules/main/gc.nix
         ./modules/main/internationalisation.nix
         ./modules/main/networking.nix

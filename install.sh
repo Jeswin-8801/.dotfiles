@@ -8,4 +8,4 @@ sudo chown -R root:root /etc/nixos
 
 cp -r home/.config/* ~/.config
 
-sudo nixos-rebuild switch --flake /etc/nixos#nix
+sudo nixos-rebuild switch --flake /etc/nixos#jeswins-nix
