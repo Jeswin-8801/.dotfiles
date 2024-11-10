@@ -9,7 +9,6 @@
   };
 
   outputs = { self, nixpkgs, disko, ... } @attrs: {
-  {
     nixosConfigurations.jeswins-nix = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = attrs;
