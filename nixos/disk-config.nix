@@ -2,18 +2,19 @@
   disko.devices = {
     disk = {
       main = {
-        device = "/dev/sda";
+        device = "/dev/sda"; # Replace with your actual disk
         type = "disk";
         content = {
-          type = "gpt";
+          type = "gpt"; # GPT partition table
           partitions = {
             ESP = {
-              end = "500M";
-              type = "EF00";
+              name = "boot";
+              type = "EF00"; # EFI System Partition
+              size = "1G";
               content = {
                 type = "filesystem";
                 format = "vfat";
-                mountpoint = "/boot";
+                mountpoint = "/boot"; # Mount point for EFI
               };
             };
             swap = {

@@ -50,7 +50,8 @@
 
           ./modules/ui/display-manager.nix
           ./modules/ui/fonts.nix
-          # ./modules/ui/gnome.nix
+          # ./modules/ui/gnome.nix          # remember to change services.nix for gnome
+          ./modules/ui/plasma6.nix
           ./modules/ui/hyprland.nix
           ./modules/ui/screen.nix
           ./modules/ui/theme.nix
@@ -63,7 +64,7 @@
 
           ./modules/security/clamav-scanner.nix
           ./modules/security/dns.nix
-          # ./modules/security/fingerprint-scanner.nix
+          ./modules/security/fingerprint-scanner.nix
           ./modules/security/firewall.nix
           ./modules/security/mac-randomize.nix
           ./modules/security/open-ssh.nix

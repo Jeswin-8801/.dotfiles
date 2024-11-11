@@ -9,3 +9,6 @@ NixOS ➕ Hyprland
 > ./install.sh
 >
 > ```
+
+> [!Caution]
+> The script `install.sh` must be run only once during a fresh installation.

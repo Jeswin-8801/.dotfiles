@@ -11,8 +11,9 @@
       spotify
       youtube-music
       discord
-      tdesktop
-      vscodium
+      telegram-desktop
+      whatsapp-for-linux
+      vscode
     ];
   };
 

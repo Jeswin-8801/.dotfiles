@@ -15,8 +15,14 @@
     enable = true;
     implementation = "broker";
     packages = with pkgs; [
+      # For xfce
       xfce.xfconf
-      gnome2.GConf
+
+      # For gnome
+      # gnome2.GConf
+
+      # For plasma6
+      kdeFrameworks.kconfig
     ];
   };
   services.mpd.enable = true;
@@ -27,31 +33,4 @@
   services.auto-cpufreq.enable = true;
   # services.gnome.core-shell.enable = true;
   # services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
-
-  environment.systemPackages = with pkgs; [
-    at-spi2-atk
-    qt6.qtwayland
-    psi-notify
-    poweralertd
-    playerctl
-    psmisc
-    grim
-    slurp
-    imagemagick
-    swappy
-    ffmpeg_6-full
-    wl-screenrec
-    wl-clipboard
-    wl-clip-persist
-    cliphist
-    xdg-utils
-    wtype
-    wlrctl
-    waybar
-    rofi-wayland
-    dunst
-    avizo
-    wlogout
-    gifsicle
-  ];
 }
