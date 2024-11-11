@@ -5,10 +5,9 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     rust-overlay.url = "github:oxalica/rust-overlay";
     wezterm.url = "github:wez/wezterm?dir=nix";
-    disko.url = "github:nix-community/disko";
   };
 
-  outputs = { self, nixpkgs, disko, ... }:
+  outputs = { self, nixpkgs, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -19,21 +18,6 @@
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
-          # Run Disko only if the flag file does not exist
-          disko.nixosModules.disko (pkgs.lib.mkIf (!builtins.pathExists "/etc/disko-applied") (import ./modules/main/disk-config.nix))
-          # Add an activation script to create the flag file
-          {
-            config = {
-              system.activationScripts.diskoFlag = {
-                text = ''
-                  if [ ! -f /etc/disko-applied ];
-                    touch /etc/disko-applied
-                  fi
-                '';
-              };
-            };
-          }
-
           ./configuration.nix
           ./hardware-configuration.nix
 

@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Partition, Format and mount disk
+sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --mode disko ./nixos/disk-config.nix
+
 sudo nixos-generate-config --root /mnt
 
 VERSION=$(grep 'system.stateVersion' /mnt/etc/nixos/configuration.nix | sed -n 's/.*"\(.*\)".*/\1/p')

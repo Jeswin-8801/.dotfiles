@@ -18,8 +18,7 @@
             };
             swap = {
               name = "swap";
-              start = "500M";
-              end = "4.5G";
+              size = "4G";
               type = "8200";
               content = {
                 type = "swap";
@@ -27,8 +26,7 @@
             };
             root = {
               name = "root";
-              start = "4.5G";
-              end = "54.5G";
+              size = "50G";
               content = {
                 type = "filesystem";
                 format = "ext4";
@@ -37,7 +35,7 @@
             };
             home = {
               name = "home";
-              start = "54.5G";
+              size = "100%";
               end = "-0";
               content = {
                 type = "filesystem";
