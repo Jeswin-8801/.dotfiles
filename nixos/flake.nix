@@ -71,7 +71,7 @@
           # ./modules/security/vpn.nix
 
 
-          ./modules/software-dev/llm.nix
+          # ./modules/software-dev/llm.nix
           ./modules/software-dev/lsp.nix
           ./modules/software-dev/programming-languages.nix
           ./modules/software-dev/virtualisation.nix

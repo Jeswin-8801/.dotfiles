@@ -3,10 +3,15 @@
 {
   # Systemd services setup
   systemd.packages = with pkgs; [
+    # https://github.com/AdnanHodzic/auto-cpufreq
     auto-cpufreq
   ];
-  
+
   # Enable Services
+
+  # disabled so that it does not conflict with auto-cpufreq
+  services.power-profiles-daemon.enable = false;
+  
   programs.direnv.enable = true;
   services.upower.enable = true;
   programs.fish.enable = true;
@@ -22,7 +27,7 @@
       # gnome2.GConf
 
       # For plasma6
-      kdeFrameworks.kconfig
+      kdePackages.kconfig
     ];
   };
   services.mpd.enable = true;

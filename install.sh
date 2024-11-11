@@ -12,7 +12,12 @@ sudo nixos-generate-config --root /mnt
 VERSION=$(grep 'system.stateVersion' /mnt/etc/nixos/configuration.nix | sed -n 's/.*"\(.*\)".*/\1/p')
 sed -i "s/your_version/$VERSION/g" nixos/configuration.nix
 
+# Move all config files to the mounted partition
 sudo cp -r nixos/* /mnt/etc/nixos
+if ! [ -d /mnt/home/.config ]; then
+    mkdir /mnt/home/.config
+fi
 sudo cp -r home/.config/* /mnt/home/.config
 
+# Install Nixos
 sudo nixos-install --flake /mnt/etc/nixos#jeswins-nix
