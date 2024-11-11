@@ -12,5 +12,25 @@ sudo nixos-generate-config --root /mnt
 VERSION=$(grep 'system.stateVersion' /mnt/etc/nixos/configuration.nix | sed -n 's/.*"\(.*\)".*/\1/p')
 sed -i "s/your_version/$VERSION/g" nixos/configuration.nix
 
+# Move all nixos config files to the mounted partition
+sudo cp -r nixos/* /mnt/etc/nixos
+
 # Install Nixos
 sudo nixos-install --flake /mnt/etc/nixos#jeswins-nix
+
+# Define the username (make sure you update users.nix as well when changing USERNAME)
+USERNAME="jeswins"
+# Create the user
+sudo useradd $USERNAME
+# Prompt the user to enter a password
+echo "Enter password for $USERNAME:"
+sudo passwd $USERNAME
+
+# move all config files to the home directory in the mounted partition
+if ! [ -d /mnt/home/.config ]; then
+    sudo mkdir /mnt/home/.config
+fi
+sudo chown -R "$USERNAME:$USERNAME" /mnt/home/.config
+
+# Reboot system
+sudo reboot
