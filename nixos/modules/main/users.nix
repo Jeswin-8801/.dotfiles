@@ -17,6 +17,9 @@
     ];
   };
 
+  # Enable fish
+  programs.fish.enable = true;
+
   # Change runtime directory size
   services.logind.extraConfig = "RuntimeDirectorySize=8G";
 }
