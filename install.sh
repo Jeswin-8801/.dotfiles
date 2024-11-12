@@ -18,17 +18,8 @@ sudo cp -r nixos/* /mnt/etc/nixos
 # Install Nixos
 sudo nixos-install --root /mnt
 
-# Define the username (make sure you update users.nix as well when changing USERNAME)
-USERNAME="jeswins"
-# Prompt the user to enter a password
-echo "Enter password for $USERNAME:"
-sudo passwd $USERNAME
-
-# move all config files to the home directory in the mounted partition
-if ! [ -d /mnt/home/.config ]; then
-    sudo mkdir /mnt/home/.config
+# If the installation was successful
+if [ $? -eq 0 ]; then
+  # Reboot system
+  reboot
 fi
-sudo chown -R "$USERNAME:$USERNAME" /mnt/home/.config
-
-# Reboot system
-sudo reboot

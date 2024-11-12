@@ -66,5 +66,6 @@
     avizo # Manages audio volume on Wayland
     wlogout # Logout menu for Wayland
     gifsicle # CLI editor for gif images
+    impala # TUI for managing WiFi
   ];
 }

@@ -15,3 +15,10 @@ This installation is run on a minimal Nixos image.
 
 > [!Caution]
 > The script `install.sh` must be run only once during a fresh installation.
+
+After reboot run:
+
+> ```bash
+> cd .dotfiles && ./post-install.sh
+>
+> ```
