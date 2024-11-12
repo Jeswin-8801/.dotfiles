@@ -16,12 +16,10 @@ sed -i "s/your_version/$VERSION/g" nixos/configuration.nix
 sudo cp -r nixos/* /mnt/etc/nixos
 
 # Install Nixos
-sudo nixos-install --flake /mnt/etc/nixos#jeswins-nix
+sudo nixos-install --root /mnt
 
 # Define the username (make sure you update users.nix as well when changing USERNAME)
 USERNAME="jeswins"
-# Create the user
-sudo useradd $USERNAME
 # Prompt the user to enter a password
 echo "Enter password for $USERNAME:"
 sudo passwd $USERNAME

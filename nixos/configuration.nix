@@ -2,9 +2,16 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ ... }:
+{ config, pkgs, ... }:
 
 {
+
+  # Global Configurations
+  imports = [
+    ./hardware-configuration.nix
+    # imports all files from ./modules/main
+    (builtins.map (file: import file) (builtins.glob ./modules/main.*nix))
+  ]
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
