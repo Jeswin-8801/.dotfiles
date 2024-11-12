@@ -9,12 +9,9 @@ fi
 USERNAME="jeswins"
 # Prompt the user to enter a password
 echo "Enter password for $USERNAME:"
-sudo passwd $USERNAME
+passwd $USERNAME
 
-# move all config files to the home directory in the mounted partition
-if ! [ -d /mnt/home/.config ]; then
-    sudo mkdir /mnt/home/.config
-fi
-sudo chown -R "$USERNAME:$USERNAME" /mnt/home/.config
+# change ownership from root to user
+chown -R "$USERNAME:users" "/home/$USERNAME/.config"
 
 sudo nixos-rebuild switch --flake /etc/nixos#jeswins-nix

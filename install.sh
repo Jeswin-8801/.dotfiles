@@ -15,6 +15,21 @@ sed -i "s/your_version/$VERSION/g" nixos/configuration.nix
 # Move all nixos config files to the mounted partition
 sudo cp -r nixos/* /mnt/etc/nixos
 
+# Define the username (make sure you update users.nix as well when changing USERNAME)
+USERNAME="jeswins"
+
+# move all config files to the home directory in the mounted partition
+if ! [ -d "/mnt/home/$USERNAME/.config" ]; then
+    sudo mkdir -p "/mnt/home/$USERNAME/.config"
+fi
+sudo cp -r home/.config/* "/mnt/home/$USERNAME/.config"
+
+# move post-install.sh to /root
+if ! [ -d /mnt/root ]; then
+    sudo mkdir /mnt/root
+fi
+sudo cp post-install.sh /mnt/root
+
 # Install Nixos
 sudo nixos-install --root /mnt
 

@@ -19,6 +19,6 @@ This installation is run on a minimal Nixos image.
 After reboot run:
 
 > ```bash
-> cd .dotfiles && ./post-install.sh
+> ./post-install.sh
 >
 > ```
