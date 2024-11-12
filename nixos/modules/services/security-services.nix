@@ -1,8 +1,7 @@
 { pkgs, lib, ... }:
 
 {
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
+  # Some programs need SUID wrappers, can be configured further or are started in user sessions.
   # programs.mtr.enable = true;
   # programs.gnupg.agent = {
   #   enable = true;
@@ -32,7 +31,7 @@
     fangfrisch.enable = true;
     fangfrisch.interval = "daily";
     updater.enable = true;
-    updater.interval = "daily"; #man systemd.time
+    updater.interval = "daily"; # man systemd.time
     updater.frequency = 12;
   };
   programs.firejail = {

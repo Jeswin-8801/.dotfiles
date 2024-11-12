@@ -36,6 +36,7 @@
   programs.xfconf.enable = true;
   services.tumbler.enable = true; 
   services.fwupd.enable = true;
+  # services.devmon.enable = true; # SNMP
   
   # services.gnome.core-shell.enable = true;
   # services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
