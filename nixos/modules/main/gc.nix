@@ -1,8 +1,9 @@
 # Garbage Collector
 
-{ ... }:
-
-{
+{ config, inputs, ... }:
+let autoGarbageCollector = config.var.autoGarbageCollector;
+in {
+   
   # Optimize storage and automatic scheduled GC running
   # If you want to run GC manually, use commands:
   # `nix-store --optimize` for finding and eliminating redundant copies of identical store paths
@@ -11,7 +12,8 @@
   nix.settings.auto-optimise-store = true;
   nix.optimise.automatic = true;
   nix.gc = {
-    automatic = true;
+    automatic = autoGarbageCollector;
+    persistent = true;
     dates = "weekly";
     options = "--delete-older-than 14d";
   };

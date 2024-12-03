@@ -1,6 +1,5 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, ... }: {
 
-{
   # Some programs need SUID wrappers, can be configured further or are started in user sessions.
   # programs.mtr.enable = true;
   # programs.gnupg.agent = {
@@ -10,11 +9,13 @@
 
   # Enable Security Services
   users.users.root.hashedPassword = "!";
+
   security.tpm2 = {
     enable = true;
     pkcs11.enable = true;
     tctiEnvironment.enable = true;
   };
+
   security.apparmor = {
     enable = true;
     packages = with pkgs; [
@@ -22,10 +23,12 @@
       apparmor-profiles
     ];
   };
+
   services.fail2ban.enable = true;
   security.pam.services.hyprlock = {};
   # security.polkit.enable = true;
   programs.browserpass.enable = true;
+
   services.clamav = {
     daemon.enable = true;
     fangfrisch.enable = true;
@@ -34,6 +37,7 @@
     updater.interval = "daily"; # man systemd.time
     updater.frequency = 12;
   };
+
   programs.firejail = {
     enable = true;
     wrappedBinaries = { 
@@ -53,10 +57,6 @@
         executable = "${lib.getBin pkgs.discord}/bin/discord";
         profile = "${pkgs.firejail}/etc/firejail/discord.profile";
       };
-      # slack = {
-      #   executable = "${lib.getBin pkgs.slack}/bin/slack";
-      #   profile = "${pkgs.firejail}/etc/firejail/slack.profile";
-      # };
       telegram-desktop = {
         executable = "${lib.getBin pkgs.tdesktop}/bin/telegram-desktop";
         profile = "${pkgs.firejail}/etc/firejail/telegram-desktop.profile";
@@ -68,10 +68,6 @@
       thunar = {
         executable = "${lib.getBin pkgs.xfce.thunar}/bin/thunar";
         profile = "${pkgs.firejail}/etc/firejail/thunar.profile";
-      };
-      vscodium = {
-        executable = "${lib.getBin pkgs.vscodium}/bin/vscodium";
-        profile = "${pkgs.firejail}/etc/firejail/vscodium.profile";
       };
     };
   };

@@ -2,13 +2,13 @@
 
 NixOS ➕ Hyprland
 
-# Install
+## Installation
 
-This installation is run on a minimal Nixos image.
+### On a minimal Nixos image
 
 > ```bash
 > nix-shell -p git fish --run fish
-> git clone https://github.com/Jeswin-8801/.dotfiles.git && cd .dotfiles
+> git clone https://github.com/Jeswin-8801/dotfiles.git && cd .dotfiles
 > ./install.sh
 >
 > ```
@@ -22,3 +22,23 @@ After reboot run:
 > ./post-install.sh
 >
 > ```
+
+### On an Existing Setup
+
+> [!IMPORTANT]
+> Change wherever necessary
+> ```bash
+> rg "CHANGEME"
+> ```
+
+> ```bash
+> git clone https://github.com/Jeswin-8801/dotfiles.git ~/.config/nixos
+> sudo nixos-rebuild switch --flake ~/.config/nixos#jeswins-nix
+> ```
+
+---
+
+## References
+
+- https://github.com/anotherhadi/nixy
+- https://github.com/XNM1/linux-nixos-hyprland-config-dotfiles

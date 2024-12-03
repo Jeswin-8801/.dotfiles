@@ -1,6 +1,5 @@
-{ pkgs, ... }:
-
-{
+{ pkgs, ... }:  {
+  
   # Linux Kernel (using the ZEN kernel)
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
   boot.kernelParams = [ 

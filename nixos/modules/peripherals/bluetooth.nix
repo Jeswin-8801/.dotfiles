@@ -1,11 +1,14 @@
-{ pkgs, ... }:
-
-{
-  # Enable Bluetooth
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = false;
+{ pkgs, ... }: {
 
   environment.systemPackages = with pkgs; [
+    blueman
     overskride
   ];
+
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
+
+  services.blueman.enable = true;  
 }

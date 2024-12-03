@@ -1,8 +1,7 @@
-{ pkgs, ... }:
-
-{
+{ pkgs, ... }:  {
+  
   # USB Automounting
-  # services.gvfs.enable = true; # Gnome virtual file system
+  services.gvfs.enable = true; # Gnome virtual file system
   services.udisks2.enable = true; # Helps with device management (https://wiki.archlinux.org/title/Udisks)
 
   # Enable USB Guard
@@ -20,6 +19,5 @@
   # Enable USB-specific packages
   environment.systemPackages = with pkgs; [
     usbutils
-    kio-fuse # Allows access to remote filesystems in KDE Plasma
   ];
 }

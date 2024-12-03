@@ -1,20 +1,16 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
+  let username = config.var.username;
+in {
 
-{
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.jeswins = {
-    isNormalUser = true;
-    description = "jeswins";
-    extraGroups = [ "networkmanager" "input" "wheel" "video" "audio" "tss" ];
-    shell = pkgs.fish;
-    packages = with pkgs; [
-      spotify
-      youtube-music
-      discord
-      telegram-desktop
-      whatsapp-for-linux
-      vscode
-    ];
+
+  users = {
+    defaultUserShell = pkgs.fish;
+    users.${username} = {
+      isNormalUser = true;
+      description = "${username} account";
+      extraGroups = [ "networkmanager" "input" "wheel" "video" "audio" "tss" ];
+    };
   };
 
   # Enable fish

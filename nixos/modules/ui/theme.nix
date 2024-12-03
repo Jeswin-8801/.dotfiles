@@ -1,6 +1,5 @@
-{ pkgs, ... }:
-
-{
+{ pkgs, ... }:  {
+  
   # Enable Theme
   environment.variables.GTK_THEME = "catppuccin-macchiato-teal-standard";
   environment.variables.XCURSOR_THEME = "Catppuccin-Macchiato-Teal";
