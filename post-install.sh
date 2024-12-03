@@ -1,7 +1,6 @@
 #!/bin/sh
 
-# Define the username (make sure you update hosts/laptop/variables.nix as well when changing USERNAME)
-USERNAME="jeswins"
+USERNAME=$(ls /home | grep -v 'lost+found' | head -n 1)
 
 if ! $(find /home/$USERNAME/.config/nixos -type d -name "flake.nix"); then
     echo "unable to find nixos config files"
@@ -13,7 +12,7 @@ echo "Enter password for $USERNAME:"
 passwd $USERNAME
 
 # change ownership from root to user
-chown -R "$USERNAME:users" "/home/$USERNAME/.config"
+chown -R "$USERNAME:$USERNAME" "/home/$USERNAME"
 
 sudo nixos-rebuild switch --flake /home/$USERNAME/.config/nixos#jeswins-nix
 

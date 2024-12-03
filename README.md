@@ -8,7 +8,7 @@ NixOS ➕ Hyprland
 
 > ```bash
 > nix-shell -p git fish --run fish
-> git clone https://github.com/Jeswin-8801/dotfiles.git && cd .dotfiles
+> git clone https://github.com/Jeswin-8801/dotfiles.git ~/.dotfiles && cd ~/.dotfiles
 > ./install.sh
 >
 > ```
@@ -16,7 +16,7 @@ NixOS ➕ Hyprland
 > [!Caution]
 > The script `install.sh` must be run only once during a fresh installation.
 
-After reboot run:
+After reboot, login as `root` and run:
 
 > ```bash
 > ./post-install.sh

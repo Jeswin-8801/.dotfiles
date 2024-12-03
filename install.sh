@@ -16,11 +16,16 @@ sed -i 's/[0-9]\+\.[0-9]\+/$VERSION/g' hosts/laptop/configuration.nix
 USERNAME="jeswins"
 
 # move all config files to the home directory in the mounted partition
-if ! [ -d "/mnt/home/$USERNAME/.config" ]; then
-    sudo mkdir -p "/mnt/home/$USERNAME/.config"
+if ! [ -d "/mnt/home/$USERNAME/.config/nixos" ]; then
+    sudo mkdir -p "/mnt/home/$USERNAME/.config/nixos"
 fi
 sudo cp -r * "/mnt/home/$USERNAME/.config/nixos"
-sudo rm -f "/mnt/home/$USERNAME/.config/nixos/*install.sh" # remove so that it is never run accidentally in the future
+
+# Adding user for base installation
+sudo cp nixos/modules/main/users.nix hosts/laptop/variables.nix /mnt/etc/nixos
+sudo sed -i '/hardware-configuration.nix/a\ \tvariables.nix \n\tusers.nix' /mnt/etc/nixos/configuration.nix
+
+sudo rm -f "/mnt/home/$USERNAME/.config/nixos/*install.sh" # removed so that it is never run accidentally in the future
 
 # move post-install.sh to /root
 if ! [ -d /mnt/root ]; then
