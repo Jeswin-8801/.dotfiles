@@ -51,7 +51,7 @@
                 [ inputs.hyprpanel.overlay inputs.nur.overlay ];
               _module.args = { inherit inputs; };
             }
-            inputs.nixos-hardware.nixosModules.omen-16-n0005ne # CHANGEME: check https://github.com/NixOS/nixos-hardware
+            inputs.nixos-hardware.nixosModules.lenovo-ideapad-s145-15api # CHANGEME: check https://github.com/NixOS/nixos-hardware
             inputs.home-manager.nixosModules.home-manager
             inputs.stylix.nixosModules.stylix
             ./hosts/laptop/configuration.nix # CHANGEME: change the path to match your host folder
